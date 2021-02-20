@@ -1,4 +1,11 @@
 # -*- coding: utf-8 -*-
+
+# Copyright 2021 Roman Adodin <scriptgr@gmail.com>  
+# https://www.youtube.com/channel/UCRv9n8HDvM8lq0Y9JCsB6Lg
+# https://scriptgu.ru/
+# https://vk.com/roman.adodin
+# -----------------------------------------------------------------------------
+
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtGui import QIcon
 from PyQt5.QtWidgets import QMessageBox, QAction, qApp, QMenu, QApplication, QDialog, QSystemTrayIcon, QStyle
