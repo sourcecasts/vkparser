@@ -1,4 +1,11 @@
 # -*- coding: utf-8 -*-
+
+# Copyright 2021 Roman Adodin <scriptgr@gmail.com>  
+# https://www.youtube.com/channel/UCRv9n8HDvM8lq0Y9JCsB6Lg
+# https://scriptgu.ru/
+# https://vk.com/roman.adodin
+# -----------------------------------------------------------------------------
+
 from vk_api import VkApi
 from vk_api.longpoll import VkLongPoll, VkEventType
 from vk_api.utils import get_random_id
@@ -8,6 +15,8 @@ from vk_api.utils import get_random_id
 from vk_api.keyboard import VkKeyboard, VkKeyboardColor
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtCore import QObject
+import datetime
+
 import time
 
 import threading 
@@ -19,9 +28,11 @@ class Processor(QObject):    # Основной класс...
     
     def __init__(self, token, group, number, stolder, edolder, sex, dialgs, online, old):    # Основной класс...
         super().__init__()
+
+        self.now = datetime.datetime.now()
         self.offset = 0
         self.array = []
-        
+
         self.token = token
         self.group = group
         self.number = number
@@ -31,7 +42,6 @@ class Processor(QObject):    # Основной класс...
         self.dialgs = dialgs
         self.online = online
         self.old = old
-        print(self.sex)
 
         self.vk_session = VkApi(token = self.token)
         self.vk = self.vk_session.get_api()
@@ -94,15 +104,15 @@ class Processor(QObject):    # Основной класс...
                 
                 if self.sex == "Женский":
                     gender = lists["sex"]
-                    if gender == 1 and int(2021 - int(rez)) == self.stolder:
+                    if gender == 1 and int(self.now.year - int(rez)) == self.stolder:
                         self.length.emit(str(lists["id"]), str(lists["first_name"]), str(lists["last_name"]), str(lists["bdate"]), str(lists["online"]), str(lists["can_write_private_message"]))
             
                 elif self.sex == "Мужской":
                     gender = lists["sex"]
-                    if gender == 2 and int(2021 - int(rez)) == self.stolder:
+                    if gender == 2 and int(self.now.year - int(rez)) == self.stolder:
                         self.length.emit(str(lists["id"]), str(lists["first_name"]), str(lists["last_name"]), str(lists["bdate"]), str(lists["online"]), str(lists["can_write_private_message"]))
             
-                elif int(2021 - int(rez)) == self.stolder:
+                elif int(self.now.year - int(rez)) == self.stolder:
                     self.length.emit(str(lists["id"]), str(lists["first_name"]), str(lists["last_name"]), str(lists["bdate"]), str(lists["online"]), str(lists["can_write_private_message"]))
    
         except Exception as error:
@@ -199,15 +209,15 @@ class Processor(QObject):    # Основной класс...
                 
                 if self.sex == "Женский":
                     gender = lists["sex"]
-                    if gender == 1 and int(2021 - int(rez)) == self.stolder and lists["online"] == 1:
+                    if gender == 1 and int(self.now.year - int(rez)) == self.stolder and lists["online"] == 1:
                         self.length.emit(str(lists["id"]), str(lists["first_name"]), str(lists["last_name"]), str(lists["bdate"]), str(lists["online"]), str(lists["can_write_private_message"]))
             
                 elif self.sex == "Мужской":
                     gender = lists["sex"]
-                    if gender == 2 and int(2021 - int(rez)) == self.stolder and lists["online"] == 1:
+                    if gender == 2 and int(self.now.year - int(rez)) == self.stolder and lists["online"] == 1:
                         self.length.emit(str(lists["id"]), str(lists["first_name"]), str(lists["last_name"]), str(lists["bdate"]), str(lists["online"]), str(lists["can_write_private_message"]))
             
-                elif int(2021 - int(rez)) == self.stolder and lists["online"] == 1:
+                elif int(self.now.year - int(rez)) == self.stolder and lists["online"] == 1:
                     self.length.emit(str(lists["id"]), str(lists["first_name"]), str(lists["last_name"]), str(lists["bdate"]), str(lists["online"]), str(lists["can_write_private_message"]))
    
         except Exception as error:
@@ -224,15 +234,15 @@ class Processor(QObject):    # Основной класс...
                 
                 if self.sex == "Женский":
                     gender = lists["sex"]
-                    if gender == 1 and int(2021 - int(rez)) == self.stolder and lists["can_write_private_message"] == 1:
+                    if gender == 1 and int(self.now.year - int(rez)) == self.stolder and lists["can_write_private_message"] == 1:
                         self.length.emit(str(lists["id"]), str(lists["first_name"]), str(lists["last_name"]), str(lists["bdate"]), str(lists["online"]), str(lists["can_write_private_message"]))
             
                 elif self.sex == "Мужской":
                     gender = lists["sex"]
-                    if gender == 2 and int(2021 - int(rez)) == self.stolder and lists["can_write_private_message"] == 1:
+                    if gender == 2 and int(self.now.year - int(rez)) == self.stolder and lists["can_write_private_message"] == 1:
                         self.length.emit(str(lists["id"]), str(lists["first_name"]), str(lists["last_name"]), str(lists["bdate"]), str(lists["online"]), str(lists["can_write_private_message"]))
             
-                elif int(2021 - int(rez)) == self.stolder and lists["can_write_private_message"] == 1:
+                elif int(self.now.year - int(rez)) == self.stolder and lists["can_write_private_message"] == 1:
                     self.length.emit(str(lists["id"]), str(lists["first_name"]), str(lists["last_name"]), str(lists["bdate"]), str(lists["online"]), str(lists["can_write_private_message"]))
    
         except Exception as error:
@@ -249,15 +259,15 @@ class Processor(QObject):    # Основной класс...
                 
                 if self.sex == "Женский":
                     gender = lists["sex"]
-                    if gender == 1 and int(2021 - int(rez)) == self.stolder and lists["can_write_private_message"] == 1 and lists["online"] == 1:
+                    if gender == 1 and int(self.now.year - int(rez)) == self.stolder and lists["can_write_private_message"] == 1 and lists["online"] == 1:
                         self.length.emit(str(lists["id"]), str(lists["first_name"]), str(lists["last_name"]), str(lists["bdate"]), str(lists["online"]), str(lists["can_write_private_message"]))
             
                 elif self.sex == "Мужской":
                     gender = lists["sex"]
-                    if gender == 2 and int(2021 - int(rez)) == self.stolder and lists["can_write_private_message"] == 1 and lists["online"] == 1:
+                    if gender == 2 and int(self.now.year - int(rez)) == self.stolder and lists["can_write_private_message"] == 1 and lists["online"] == 1:
                         self.length.emit(str(lists["id"]), str(lists["first_name"]), str(lists["last_name"]), str(lists["bdate"]), str(lists["online"]), str(lists["can_write_private_message"]))
             
-                elif int(2021 - int(rez)) == self.stolder and lists["can_write_private_message"] == 1 and lists["online"] == 1:
+                elif int(self.now.year - int(rez)) == self.stolder and lists["can_write_private_message"] == 1 and lists["online"] == 1:
                     self.length.emit(str(lists["id"]), str(lists["first_name"]), str(lists["last_name"]), str(lists["bdate"]), str(lists["online"]), str(lists["can_write_private_message"]))
    
         except Exception as error:
