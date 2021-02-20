@@ -8,7 +8,7 @@
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtGui import QIcon
-from PyQt5.QtWidgets import QMessageBox, QAction, qApp, QMenu, QApplication, QDialog, QSystemTrayIcon, QStyle
+from PyQt5.QtWidgets import QMessageBox, QAction, QMenu, QApplication, QDialog, QSystemTrayIcon, QStyle
 
 from vk_api import VkApi
 from vk_api.longpoll import VkLongPoll, VkEventType
