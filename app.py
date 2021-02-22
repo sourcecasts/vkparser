@@ -41,6 +41,9 @@ class ExampleApp(QtWidgets.QMainWindow, untitled.Ui_MainWindow):
         header.setSectionResizeMode(0, QtWidgets.QHeaderView.Stretch)
         self.tableWidget.setRowCount(self.number)
 
+        self.urlLink = "<a href=\"https://www.youtube.com/channel/UCRv9n8HDvM8lq0Y9JCsB6Lg/videos\">YouTube канал Автора</a>" 
+        self.label_channel.setText(self.urlLink)
+      
         self.btn_send.clicked.connect(self.hunter)
         self.btn_sear.clicked.connect(self.start)
         
